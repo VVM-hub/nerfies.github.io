@@ -1,12 +1,12 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
+var INTERP_BASE = "https://raw.githubusercontent.com/VVM-hub/project_page_assets/main/L0NeRF_page/figures/lego_base";//./static/interpolation/stacked
+var NUM_INTERP_FRAMES = 81;//240
 
 var interp_images = [];
 function preloadInterpolationImages() {
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
+    var path = INTERP_BASE + '/' + String(i).padStart(3, '0') + '.png';//changed: String(i).padStart(6, '0') + '.jpg'
     interp_images[i] = new Image();
     interp_images[i].src = path;
   }
