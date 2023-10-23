@@ -29,7 +29,7 @@ function setInterpolationImagel0(i) {
   var image = interp_images_l0[i];
   image.ondragstart = function() { return false; };
   image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
+  $('#interpolation-image-wrapper2').empty().append(image);
 }
 
 $(document).ready(function() {
