@@ -6,11 +6,15 @@ var INTERP_L0 = "https://raw.githubusercontent.com/VVM-hub/project_page_assets/m
 var NUM_INTERP_FRAMES = 200;//240
 
 var interp_images = [];
+var interp_images_l0 = [];
 function preloadInterpolationImages() {
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
     var path = INTERP_BASE + '/' + String(i).padStart(3, '0') + '.png';//changed: String(i).padStart(6, '0') + '.jpg'
     interp_images[i] = new Image();
     interp_images[i].src = path;
+    var path = INTERP_L0 + '/' + String(i).padStart(3, '0') + '.png';
+    interp_images_l0[i] = new Image();
+    interp_images_l0[i].src = path;
   }
 }
 
@@ -21,6 +25,12 @@ function setInterpolationImage(i) {
   $('#interpolation-image-wrapper').empty().append(image);
 }
 
+function setInterpolationImagel0(i) {
+  var image = interp_images_l0[i];
+  image.ondragstart = function() { return false; };
+  image.oncontextmenu = function() { return false; };
+  $('#interpolation-image-wrapper').empty().append(image);
+}
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -74,6 +84,12 @@ $(document).ready(function() {
     });
     setInterpolationImage(0);
     $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+
+    $('#interpolation-slider2').on('input', function(event) {
+      setInterpolationImagel0(this.value);
+    });
+    setInterpolationImagel0(0);
+    $('#interpolation-slider2').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
 
